@@ -502,7 +502,7 @@ class ErpServiceProvider extends ServiceProvider
     }
     protected function insertMenuOrUpdate(string $key,string $name ='',array $lists=[]): void
     {
-        if(!($purchase_status_id = \Slowlyo\OwlDict\Models\AdminDict::query()->where(['key'=>$key,'name'=>$name])->value('id'))){
+        if(!($purchase_status_id = \Slowlyo\OwlDict\Models\AdminDict::query()->where(['key'=>$key,'value'=>$name])->value('id'))){
             $purchase_status_id = \Slowlyo\OwlDict\Models\AdminDict::query()->insertGetId([
                 'parent_id' => '0',
                 'key' => $key,
