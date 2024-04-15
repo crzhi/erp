@@ -79,6 +79,10 @@ class GoodService extends AdminService
         $data['coding'] = str_replace('{datetime}',date('Y-m-d H:i:s'),$data['coding']);
         // 替换分类
         $data['coding'] = str_replace('{type}',$data['class'],$data['coding']);
+        // 审核默认值
+        if(!(isset($data['id']) && $data['id']>=1)){
+            $data['pass_status'] = 0;
+        }
         // 替换品牌
         $data['coding'] = str_replace('{brand}',$data['brand'],$data['coding']);
         if(isset($data['sku']) && is_array($data['sku']) && count($data['sku'])>=1){

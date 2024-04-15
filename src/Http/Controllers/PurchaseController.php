@@ -212,7 +212,7 @@ class PurchaseController extends AdminController
                     amis()->NumberControl('price', '采购价格')->precision(2)->required()->static(),
                     amis()->NumberControl('tax_money', '税金')->precision(2)->static(),
                     amis()->NumberControl('all_money', '采购总价')->precision(2)->value('${price*number}')->static(),
-                    amis()->TextControl('remarks', '备注')->static(),
+                    amis()->TextControl('remarks', '备注')->width(200)->static(),
                 ]),
         ])
             ->initApi($this->getShowPath())

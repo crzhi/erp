@@ -77,7 +77,7 @@ class BrandClasController extends AdminController
     {
         return $this->baseForm()->body([
             amis()->HiddenControl('id','ID'),
-            amis()->TextareaControl('name', '名称')->maxLength(15)->required(),
+            amis()->TextControl('name', '名称')->maxLength(15)->required(),
             amis()->SwitchControl('status', '是否启用')->trueValue(1)->falseValue(0)->required()
                 ->onText('启用')
                 ->offText('禁用')
