@@ -1,5 +1,5 @@
 {
-    "name": "uupt/erp",
+    "name": "uupt-open/erp",
     "alias": "进销存管理",
     "description": "进销存管理模块",
     "type": "library",
@@ -16,8 +16,8 @@
     "require": {
         "php": ">=8.0",
         "slowlyo/owl-admin": "*",
-        "uupt/approval": "*",
-        "uupt/filesystem": "*"
+        "uupt-open/approval": "*",
+        "uupt-open/filesystem": "*"
     },
     "autoload": {
         "psr-4": {
