@@ -7,6 +7,7 @@ use Slowlyo\OwlAdmin\Models\AdminMenu;
 use Slowlyo\OwlAdmin\Renderers\TextControl;
 use Slowlyo\OwlAdmin\Extend\ServiceProvider;
 use Slowlyo\OwlDict\AdminDict;
+use Slowlyo\OwlDict\Models\AdminDict as AdminDictModel;
 use Uupt\Approval\Library\DataSourcesManager;
 use Uupt\Erp\DataSources\GoodsDataSources;
 use Uupt\Erp\DataSources\PurchaseDataSources;
@@ -308,215 +309,78 @@ class ErpServiceProvider extends ServiceProvider
             ]
         ]);
     }
-    protected function installDict()
+
+    /**
+     * 安装字典
+     * @return void
+     */
+    protected function installDict(): void
     {
-        $this->insertMenuOrUpdate('uupt.erp.purchase.status','采购状态',[
+        $dicts = [
             [
-                'key' => '0',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '待审核',
-                'created_at' => '2024-04-13 01:10:58',
-                'updated_at' => '2024-04-13 01:10:58',
-
+                'key' => 'uupt.erp.purchase.status',
+                'value' => '采购状态',
+                'keys' => [
+                    ['key' => 0, 'value' => '待审核'],
+                    ['key' => 1, 'value' => '采购中'],
+                    ['key' => 2, 'value' => '入库中'],
+                    ['key' => 3, 'value' => '已完成'],
+                    ['key' => 4, 'value' => '已拒绝'],
+                    ['key' => 5, 'value' => '待提交'],
+                ]
             ],
             [
-                'key' => '1',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '采购中',
-                'created_at' => '2024-04-13 01:11:04',
-                'updated_at' => '2024-04-13 01:11:04',
-
+                'key' => 'uupt.erp.purchase.pay_type',
+                'value' => '采购支付类型',
+                'keys' => [
+                    ['key' => "0", 'value' => '未确定'],
+                    ['key' => "1", 'value' => '账期结算'],
+                    ['key' => "2", 'value' => '预付款'],
+                    ['key' => "3", 'value' => '银行转账'],
+                    ['key' => "4", 'value' => '现金支付'],
+                    ['key' => "5", 'value' => '在线支付'],
+                    ['key' => "6", 'value' => '其他方式'],
+                ]
             ],
             [
-                'key' => '2',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '入库中',
-                'created_at' => '2024-04-13 01:11:12',
-                'updated_at' => '2024-04-13 01:11:12',
-
+                'key' => 'uupt.erp.goods.status',
+                'value' => '商品状态',
+                'keys' => [
+                    ['key' => "1", 'value' => '正常'],
+                    ['key' => "2", 'value' => '下架'],
+                    ['key' => "3", 'value' => '停售'],
+                    ['key' => "4", 'value' => '停产'],
+                ]
             ],
             [
-                'key' => '3',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '已完成',
-                'created_at' => '2024-04-13 01:11:20',
-                'updated_at' => '2024-04-13 01:11:20',
-
+                'key' => 'uupt.erp.goods.pass_status',
+                'value' => '商品审核状态',
+                'keys' => [
+                    ['key' => "0", 'value' => '待审核'],
+                    ['key' => "1", 'value' => '已通过'],
+                    ['key' => "2", 'value' => '已拒绝'],
+                ]
             ],
-            [
-                'key' => '4',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '已拒绝',
-                'created_at' => '2024-04-13 01:11:26',
-                'updated_at' => '2024-04-13 01:11:26',
-
-            ],
-            [
-                'key' => '5',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '待提交',
-                'created_at' => '2024-04-13 01:28:19',
-                'updated_at' => '2024-04-13 01:28:19',
-            ]
-        ]);
-        $this->insertMenuOrUpdate('uupt.erp.purchase.pay_type','采购支付类型',[
-            [
-                'key' => '0',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '未确定',
-                'created_at' => '2024-04-13 01:12:01',
-                'updated_at' => '2024-04-13 01:12:01',
-
-            ],
-            [
-                'key' => '1',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '账期结算',
-                'created_at' => '2024-04-13 01:12:08',
-                'updated_at' => '2024-04-13 01:12:08',
-
-            ],
-            [
-                'key' => '2',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '预付款',
-                'created_at' => '2024-04-13 01:12:13',
-                'updated_at' => '2024-04-13 01:12:13',
-
-            ],
-            [
-                'key' => '3',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '银行转账',
-                'created_at' => '2024-04-13 01:12:20',
-                'updated_at' => '2024-04-13 01:12:20',
-
-            ],
-            [
-                'key' => '4',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '现金支付',
-                'created_at' => '2024-04-13 01:12:26',
-                'updated_at' => '2024-04-13 01:12:26',
-
-            ],
-            [
-                'key' => '5',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '在线支付',
-                'created_at' => '2024-04-13 01:12:33',
-                'updated_at' => '2024-04-13 01:12:33',
-
-            ],
-            [
-                'key' => '6',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '其他方式',
-                'created_at' => '2024-04-13 01:12:39',
-                'updated_at' => '2024-04-13 01:12:39',
-
-            ],
-        ]);
-        $this->insertMenuOrUpdate('uupt.erp.goods.status','商品状态',[
-            [
-                'key' => '1',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '正常',
-                'created_at' => '2024-04-13 01:22:46',
-                'updated_at' => '2024-04-13 01:22:46',
-
-            ],
-            [
-                'key' => '2',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '下架',
-                'created_at' => '2024-04-13 01:22:55',
-                'updated_at' => '2024-04-13 01:22:55',
-
-            ],
-            [
-                'key' => '3',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '停售',
-                'created_at' => '2024-04-13 01:23:01',
-                'updated_at' => '2024-04-13 01:23:01',
-
-            ],
-            [
-                'key' => '4',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '停产',
-                'created_at' => '2024-04-13 01:23:07',
-                'updated_at' => '2024-04-13 01:23:07',
-
-            ],
-        ]);
-        $this->insertMenuOrUpdate('uupt.erp.goods.pass_status','商品审核状态',[
-            [
-                'key' => '0',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '待审核',
-                'created_at' => '2024-04-13 01:23:21',
-                'updated_at' => '2024-04-13 01:23:21',
-
-            ],
-            [
-                'key' => '1',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '已通过',
-                'created_at' => '2024-04-13 01:23:24',
-                'updated_at' => '2024-04-13 01:23:24',
-
-            ],
-            [
-                'key' => '2',
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => '已拒绝',
-                'created_at' => '2024-04-13 01:23:29',
-                'updated_at' => '2024-04-13 01:23:29',
-
-            ],
-        ]);
-    }
-    protected function insertMenuOrUpdate(string $key,string $name ='',array $lists=[]): void
-    {
-        if(!($purchase_status_id = \Slowlyo\OwlDict\Models\AdminDict::query()->where(['key'=>$key,'value'=>$name])->value('id'))){
-            $purchase_status_id = \Slowlyo\OwlDict\Models\AdminDict::query()->insertGetId([
-                'parent_id' => '0',
-                'key' => $key,
-                'enabled' => 1,
-                'sort' => 0,
-                'value' => $name,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ]);
-        }
-        foreach ($lists as $item){
-            if(!\Slowlyo\OwlDict\Models\AdminDict::query()->where(['parent_id'=>$purchase_status_id,'key'=>$key,'value'=>$item['value']])->first()){
-                $item['parent_id'] = $purchase_status_id;
-                $item['created_at'] = date('Y-m-d H:i:s');
-                $item['updated_at'] = date('Y-m-d H:i:s');
-                \Slowlyo\OwlDict\Models\AdminDict::query()->insert($item);
+        ];
+        foreach ($dicts as $dict) {
+            $dictModel = AdminDictModel::query()->where('key', $dict['key'])->first();
+            if (!$dictModel) {
+                $dictModel = new AdminDictModel();
+                $dictModel->value = $dict['value'];
+                $dictModel->enabled = 1;
+                $dictModel->key = $dict['key'];
+                $dictModel->save();
+            }
+            foreach ($dict['keys'] as $value) {
+                $dictValueModel = AdminDictModel::query()->where('parent_id', $dictModel->id)->where('key', $value['key'])->first();
+                if (!$dictValueModel) {
+                    $dictValueModel = new AdminDictModel();
+                    $dictValueModel->parent_id = $dictModel->id;
+                    $dictValueModel->key = $value['key'];
+                    $dictValueModel->value = $value['value'];
+                    $dictValueModel->enabled = 1;
+                    $dictValueModel->save();
+                }
             }
         }
     }
