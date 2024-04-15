@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('sku')->default('')->comment('规格');
             $table->integer('number')->index()->comment('数量');
             $table->string('remarks')->default('')->comment('备注');
+            $table->integer('warehouse')->index()->comment('仓库');
+            $table->string('warehouse_position')->comment('库位');
             $table->timestamps();
             $table->softDeletes();
         });
