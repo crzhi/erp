@@ -82,7 +82,7 @@ class CompanyController extends AdminController
                     amis()->TextareaControl('desc', '企业描述')->required(),
                     amis()->GroupControl()->body([
                         amis()->SelectControl('class', '企业分类')->source('/erp/get-company-class'),
-                        amis()->ImageControl('logo', 'logo'),
+                        \UuptImageControl('logo', 'logo'),
                         amis()->NumberControl('sort', '排序')->min(0)->value(0)->required(),
                     ]),
                     amis()->GroupControl()->body([
@@ -100,7 +100,7 @@ class CompanyController extends AdminController
                 ]),
                 amis()->Tab()->title('资质信息')->body([
                     amis()->TextControl('code', '信用代码'),
-                    amis()->ImageControl('id_img', '营业执照'),
+                    \UuptImageControl('id_img', '营业执照'),
                 ]),
                 amis()->Tab()->title('银行信息')->body([
                     amis()->TextControl('bank_type', '开户平台'),
