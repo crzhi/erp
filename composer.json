@@ -1,0 +1,38 @@
+{
+    "name": "uupt/erp",
+    "alias": "进销存管理",
+    "description": "进销存管理模块",
+    "type": "library",
+    "version": "1.0.0",
+    "keywords": ["owl-admin", "extension"],
+    "homepage": "https://github.com/uupt/erp",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "UU跑腿",
+            "email": "admin@uupt.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "slowlyo/owl-admin": "*",
+        "uupt/approval": "*",
+        "uupt/filesystem": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Uupt\\Erp\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "extra": {
+        "owl-admin": "Uupt\\Erp\\ErpServiceProvider",
+        "laravel": {
+            "providers": [
+                "Uupt\\Erp\\ErpServiceProvider"
+            ]
+        }
+    }
+}
