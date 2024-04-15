@@ -2,6 +2,7 @@
 
 namespace Uupt\Erp;
 
+use Illuminate\Support\Facades\Cache;
 use Slowlyo\OwlAdmin\Extend\Extension;
 use Slowlyo\OwlAdmin\Models\AdminMenu;
 use Slowlyo\OwlAdmin\Renderers\TextControl;
@@ -19,6 +20,9 @@ class ErpServiceProvider extends ServiceProvider
         parent::install();
         // 安装字典数据
         $this->installDict();
+        // 清空字典缓存
+        Cache::forget('admin_dict_cache_key');
+        Cache::forget('admin_dict_valid_cache_key');
         // 安装菜单数据
         $this->installMenu();
     }

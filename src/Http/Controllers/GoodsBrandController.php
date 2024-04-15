@@ -82,7 +82,7 @@ class GoodsBrandController extends AdminController
     {
         return $this->baseForm()->body([
             amis()->HiddenControl('id','ID')->disabled(),
-            amis()->TextareaControl('name', '品牌名称')->maxLength(15)->required(),
+            amis()->TextControl('name', '品牌名称')->maxLength(15)->required(),
 			amis()->TextControl('website', '官网地址')->type('input-url'),
 			amis()->SelectControl('class', '品牌分类')->source('/erp/get-brand-class')->required(),
 			amis()->TextareaControl('desc', '品牌描述')->required(),
