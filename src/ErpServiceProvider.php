@@ -4,10 +4,8 @@ namespace Uupt\Erp;
 
 use Illuminate\Support\Facades\Cache;
 use Slowlyo\OwlAdmin\Extend\Extension;
-use Slowlyo\OwlAdmin\Models\AdminMenu;
 use Slowlyo\OwlAdmin\Renderers\TextControl;
 use Slowlyo\OwlAdmin\Extend\ServiceProvider;
-use Slowlyo\OwlDict\AdminDict;
 use Slowlyo\OwlDict\Models\AdminDict as AdminDictModel;
 use Uupt\Approval\Library\DataSourcesManager;
 use Uupt\Erp\DataSources\GoodsDataSources;
@@ -15,6 +13,120 @@ use Uupt\Erp\DataSources\PurchaseDataSources;
 
 class ErpServiceProvider extends ServiceProvider
 {
+    protected $menu = [
+        [
+            'parent'   => '',
+            'title'    => 'ERP模块',
+            'url'      => '/erp',
+            'url_type' => '1',
+            'icon'     => 'carbon:network-enterprise',
+        ],
+        [
+            'parent'   => 'ERP模块',
+            'title'    => '商品模块',
+            'url'      => '/erp/goods',
+            'url_type' => '1',
+            'icon'     => 'ep:goods',
+        ],
+        [
+            'parent'   => '商品模块',
+            'title'    => '商品管理',
+            'url'      => '/goods',
+            'url_type' => '1',
+            'icon'     => 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
+        ],
+        [
+            'parent'   => '商品模块',
+            'title'    => '商品分类',
+            'url'      => '/goods_class',
+            'url_type' => '1',
+            'icon'     => 'arcticons:anytype',
+        ],
+        [
+            'parent'   => '商品模块',
+            'title'    => '计量单位',
+            'url'      => '/goods_unit',
+            'url_type' => '1',
+            'icon'     => 'pajamas:issue-type-objective',
+        ],
+        [
+            'parent'   => '商品模块',
+            'title'    => '商品品牌',
+            'url'      => '/goods_brand',
+            'url_type' => '1',
+            'icon'     => 'brandico:bandcamp',
+        ],
+        [
+            'parent'   => '商品模块',
+            'title'    => '品牌分类',
+            'url'      => '/brand_class',
+            'url_type' => '1',
+            'icon'     => 'iconoir:plug-type-l',
+        ],
+        [
+            'parent'   => '',
+            'title'    => '供应商管理',
+            'url'      => '/companys',
+            'url_type' => '1',
+            'icon'     => 'arcticons:microsoft-company-portal',
+        ],
+        [
+            'parent'   => '供应商管理',
+            'title'    => '企业分类',
+            'url'      => '/company_class',
+            'url_type' => '1',
+            'icon'     => 'material-symbols-light:type-specimen-outline',
+        ],
+        [
+            'parent'   => '供应商管理',
+            'title'    => '企业管理',
+            'url'      => '/company',
+            'url_type' => '1',
+            'icon'     => 'arcticons:microsoft-company-portal',
+        ],
+        [
+            'parent'   => '',
+            'title'    => '仓库管理',
+            'url'      => '/erp/store',
+            'url_type' => '1',
+            'icon'     => 'fa-solid:warehouse',
+        ],
+        [
+            'parent'   => '仓库管理',
+            'title'    => '仓库管理',
+            'url'      => '/warehouse',
+            'url_type' => '1',
+            'icon'     => 'ant-design:appstore-twotone',
+        ],
+        [
+            'parent'   => '仓库管理',
+            'title'    => '仓库分类',
+            'url'      => '/warehouse_class',
+            'url_type' => '1',
+            'icon'     => 'ph:circle-half-tilt-light',
+        ],
+        [
+            'parent'   => '',
+            'title'    => '采购管理',
+            'url'      => '/purchase-model',
+            'url_type' => '1',
+            'icon'     => 'bx:purchase-tag',
+        ],
+        [
+            'parent'   => '采购管理',
+            'title'    => '采购订单',
+            'url'      => '/purchase',
+            'url_type' => '1',
+            'icon'     => 'bx:bxs-purchase-tag-alt',
+        ],
+        [
+            'parent'   => '采购管理',
+            'title'    => '入库管理',
+            'url'      => '/put_warehouse',
+            'url_type' => '1',
+            'icon'     => 'ph:circle',
+        ],
+    ];
     public function install()
     {
         parent::install();
@@ -23,295 +135,6 @@ class ErpServiceProvider extends ServiceProvider
         // 清空字典缓存
         Cache::forget('admin_dict_cache_key');
         Cache::forget('admin_dict_valid_cache_key');
-        // 安装菜单数据
-        $this->installMenu();
-    }
-    protected function installMenu(): void
-    {
-        // ERP 管理
-        $root_id = AdminMenu::query()->insertGetId([
-            'parent_id' => 0,
-            'order' => 0,
-            'title' => 'ERP模块',
-            'icon' => 'carbon:network-enterprise',
-            'url' => '/erp',
-            'url_type' => 1,
-            'visible' => 1,
-            'is_home' => 0,
-            'keep_alive' => 0,
-            'iframe_url' => NULL,
-            'component' => 'amis',
-            'is_full' => 0,
-            'extension' => NULL,
-        ]);
-        // 商品管理
-        $goods_node_id = AdminMenu::query()->insertGetId([
-            'parent_id' => $root_id,
-            'order' => 0,
-            'title' => '商品模块',
-            'icon' => 'ep:goods',
-            'url' => '/erp/goods',
-            'url_type' => 1,
-            'visible' => 1,
-            'is_home' => 0,
-            'keep_alive' => 0,
-            'iframe_url' => NULL,
-            'component' => 'amis',
-            'is_full' => 0,
-            'extension' => NULL,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        AdminMenu::query()->insert([
-            [
-                'parent_id' => $goods_node_id,
-                'order' => 100,
-                'title' => '商品管理',
-                'icon' => 'streamline:shopping-bag-hand-bag-2-shopping-bag-purse-goods-item-products',
-                'url' => '/goods',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $goods_node_id,
-                'order' => 100,
-                'title' => '商品分类',
-                'icon' => 'arcticons:anytype',
-                'url' => '/goods_class',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $goods_node_id,
-                'order' => 100,
-                'title' => '计量单位',
-                'icon' => 'pajamas:issue-type-objective',
-                'url' => '/goods_unit',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $goods_node_id,
-                'order' => 100,
-                'title' => '商品品牌',
-                'icon' => 'brandico:bandcamp',
-                'url' => '/goods_brand',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $goods_node_id,
-                'order' => 100,
-                'title' => '品牌分类',
-                'icon' => 'iconoir:plug-type-l',
-                'url' => '/brand_class',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ]);
-
-        // 供应商管理
-        $company_node_id = AdminMenu::query()->insertGetId([
-            'parent_id' => $root_id,
-            'order' => 0,
-            'title' => '供应商管理',
-            'icon' => 'arcticons:microsoft-company-portal',
-            'url' => '/companys',
-            'url_type' => 1,
-            'visible' => 1,
-            'is_home' => 0,
-            'keep_alive' => 0,
-            'iframe_url' => NULL,
-            'component' => 'amis',
-            'is_full' => 0,
-            'extension' => NULL,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        AdminMenu::query()->insert([
-            [
-                'parent_id' => $company_node_id,
-                'order' => 100,
-                'title' => '企业分类',
-                'icon' => 'material-symbols-light:type-specimen-outline',
-                'url' => '/company_class',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $company_node_id,
-                'order' => 0,
-                'title' => '企业管理',
-                'icon' => 'arcticons:microsoft-company-portal',
-                'url' => '/company',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => 'amis',
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ]);
-        // 仓库管理
-        $store_node_id = AdminMenu::query()->insertGetId([
-            'parent_id' => $root_id,
-            'order' => 0,
-            'title' => '仓库管理',
-            'icon' => 'fa-solid:warehouse',
-            'url' => '/erp/store',
-            'url_type' => 1,
-            'visible' => 1,
-            'is_home' => 0,
-            'keep_alive' => 0,
-            'iframe_url' => NULL,
-            'component' => 'amis',
-            'is_full' => 0,
-            'extension' => NULL,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        AdminMenu::query()->insert([
-            [
-                'parent_id' => $store_node_id,
-                'order' => 100,
-                'title' => '仓库管理',
-                'icon' => 'ant-design:appstore-twotone',
-                'url' => '/warehouse',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $store_node_id,
-                'order' => 100,
-                'title' => '仓库分类',
-                'icon' => 'ph:circle-half-tilt-light',
-                'url' => '/warehouse_class',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ]);
-        // 采购管理
-        $purchase_node_id = AdminMenu::query()->insertGetId([
-            'parent_id' => $root_id,
-            'order' => 0,
-            'title' => '采购管理',
-            'icon' => 'bx:purchase-tag',
-            'url' => '/purchase-model',
-            'url_type' => 1,
-            'visible' => 1,
-            'is_home' => 0,
-            'keep_alive' => 0,
-            'iframe_url' => NULL,
-            'component' => 'amis',
-            'is_full' => 0,
-            'extension' => NULL,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        AdminMenu::query()->insert([
-            [
-                'parent_id' => $purchase_node_id,
-                'order' => 100,
-                'title' => '采购订单',
-                'icon' => 'bx:bxs-purchase-tag-alt',
-                'url' => '/purchase',
-                'url_type' => 1,
-                'visible' => 1,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'parent_id' => $purchase_node_id,
-                'order' => 100,
-                'title' => '入库管理',
-                'icon' => 'ph:circle',
-                'url' => '/put_warehouse',
-                'url_type' => 1,
-                'visible' => 0,
-                'is_home' => 0,
-                'keep_alive' => 0,
-                'iframe_url' => NULL,
-                'component' => NULL,
-                'is_full' => 0,
-                'extension' => NULL,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ]);
     }
 
     /**
