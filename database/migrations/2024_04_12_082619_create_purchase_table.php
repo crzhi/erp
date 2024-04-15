@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('order_remarks')->nullable()->default('')->comment('单据备注');
             $table->string('contacts')->nullable()->default('')->comment('联系人');
             $table->string('mobile')->nullable()->default('')->comment('联系电话');
-            $table->text('detail')->default('')->comment('采购详情');
+            $table->text('detail')->comment('采购详情');
             $table->timestamps();
             $table->softDeletes();
         });
