@@ -122,7 +122,7 @@ class GoodController extends AdminController
                 ]),
                 // 商品详情
                 amis()->Tab()->title('商品详情')->body([
-                    amis()->RichTextControl('rich_text', '介绍描述内容')->required(),
+                    \UuptRichTextControl('rich_text', '介绍描述内容')->required(),
                 ]),
                 // 规格信息
                 amis()->Tab()->title('规格信息')->body([
