@@ -27,9 +27,9 @@ class ErpServiceProvider extends ServiceProvider
         $root_id = AdminMenu::query()->insertGetId([
             'parent_id' => 0,
             'order' => 0,
-            'title' => '审批测试',
-            'icon' => 'fluent-mdl2:document-approval',
-            'url' => '/approval_demo',
+            'title' => 'ERP模块',
+            'icon' => 'carbon:network-enterprise',
+            'url' => '/erp',
             'url_type' => 1,
             'visible' => 1,
             'is_home' => 0,
@@ -38,8 +38,6 @@ class ErpServiceProvider extends ServiceProvider
             'component' => 'amis',
             'is_full' => 0,
             'extension' => NULL,
-            'created_at' => '2024-04-09 01:40:38',
-            'updated_at' => '2024-04-09 01:40:38'
         ]);
         // 商品管理
         $goods_node_id = AdminMenu::query()->insertGetId([

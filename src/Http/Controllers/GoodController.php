@@ -109,7 +109,7 @@ class GoodController extends AdminController
             $templateTpl = '';
         }
         return $this->baseForm()->body([
-            amis()->HiddenControl('id','ID')->required()->hidden(),
+            amis()->HiddenControl('id','ID')->hidden(),
             amis()->Tabs()->tabs([
                 // 基础信息
                 amis()->Tab()->title('基础信息')->body([
@@ -118,7 +118,7 @@ class GoodController extends AdminController
                     amis()->SelectControl('brand', '品牌')->source('/erp/get-brand')->required(),
                     amis()->TreeSelectControl('class', '商品分类')->source('/erp/get-goods-class-tree')->required(),
                     amis()->TextareaControl('desc', '商品描述')->required(),
-                    amis()->RadiosControl('status','状态')->options(erp_admin_dict_options('goods.status'))->value(1),
+                    amis()->SelectControl('status','状态')->options(erp_admin_dict_options('goods.status'))->value('1'),
                 ]),
                 // 商品详情
                 amis()->Tab()->title('商品详情')->body([
