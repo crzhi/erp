@@ -15,7 +15,7 @@ class ErpServiceProvider extends ServiceProvider
 {
     protected $menu = [
         [
-            'parent'   => '',
+            'parent'   => 0,
             'title'    => 'ERP模块',
             'url'      => '/erp',
             'url_type' => '1',
@@ -64,7 +64,7 @@ class ErpServiceProvider extends ServiceProvider
             'icon'     => 'iconoir:plug-type-l',
         ],
         [
-            'parent'   => '',
+            'parent'   => 'ERP模块',
             'title'    => '供应商管理',
             'url'      => '/companys',
             'url_type' => '1',
@@ -85,7 +85,7 @@ class ErpServiceProvider extends ServiceProvider
             'icon'     => 'arcticons:microsoft-company-portal',
         ],
         [
-            'parent'   => '',
+            'parent'   => 'ERP模块',
             'title'    => '仓库管理',
             'url'      => '/erp/store',
             'url_type' => '1',
@@ -106,7 +106,7 @@ class ErpServiceProvider extends ServiceProvider
             'icon'     => 'ph:circle-half-tilt-light',
         ],
         [
-            'parent'   => '',
+            'parent'   => 'ERP模块',
             'title'    => '采购管理',
             'url'      => '/purchase-model',
             'url_type' => '1',
