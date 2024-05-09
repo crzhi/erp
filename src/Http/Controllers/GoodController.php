@@ -8,7 +8,7 @@ use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
 use ManoCode\Erp\Models\Good;
 use ManoCode\Erp\Models\GoodsUnit;
-use Uupt\Erp\Services\GoodService;
+use ManoCode\Erp\Services\GoodService;
 use Illuminate\Http\Request;
 
 /**
