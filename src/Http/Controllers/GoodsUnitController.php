@@ -1,13 +1,13 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\GoodsUnit;
-use Uupt\Erp\Services\GoodsUnitService;
+use ManoCode\Erp\Models\GoodsUnit;
+use ManoCode\Erp\Services\GoodsUnitService;
 
 /**
  * 计量单位

@@ -1,13 +1,13 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\BrandClas;
-use Uupt\Erp\Services\BrandClasService;
+use ManoCode\Erp\Models\BrandClas;
+use ManoCode\Erp\Services\BrandClasService;
 
 /**
  * 品牌分类

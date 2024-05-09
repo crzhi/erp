@@ -1,13 +1,13 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\Company;
-use Uupt\Erp\Services\CompanyService;
+use ManoCode\Erp\Models\Company;
+use ManoCode\Erp\Services\CompanyService;
 
 /**
  * 企业管理
@@ -82,7 +82,7 @@ class CompanyController extends AdminController
                     amis()->TextareaControl('desc', '企业描述')->required(),
                     amis()->GroupControl()->body([
                         amis()->SelectControl('class', '企业分类')->source('/erp/get-company-class'),
-                        \UuptImageControl('logo', 'logo'),
+                        \ManoCodeImageControl('logo', 'logo'),
                         amis()->NumberControl('sort', '排序')->min(0)->value(0)->required(),
                     ]),
                     amis()->GroupControl()->body([
@@ -100,7 +100,7 @@ class CompanyController extends AdminController
                 ]),
                 amis()->Tab()->title('资质信息')->body([
                     amis()->TextControl('code', '信用代码'),
-                    \UuptImageControl('id_img', '营业执照'),
+                    \ManoCodeImageControl('id_img', '营业执照'),
                 ]),
                 amis()->Tab()->title('银行信息')->body([
                     amis()->TextControl('bank_type', '开户平台'),

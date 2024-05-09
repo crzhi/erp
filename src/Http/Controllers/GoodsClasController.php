@@ -1,15 +1,15 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\Good;
-use Uupt\Erp\Models\GoodsClas;
-use Uupt\Erp\Models\Warehouse;
-use Uupt\Erp\Services\GoodsClasService;
+use ManoCode\Erp\Models\Good;
+use ManoCode\Erp\Models\GoodsClas;
+use ManoCode\Erp\Models\Warehouse;
+use ManoCode\Erp\Services\GoodsClasService;
 
 /**
  * 商品分类

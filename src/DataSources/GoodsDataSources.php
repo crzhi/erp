@@ -1,14 +1,14 @@
 <?php
 
-namespace Uupt\Erp\DataSources;
+namespace ManoCode\Erp\DataSources;
 
 
 use Illuminate\Database\Eloquent\Model;
-use Uupt\Approval\Library\DataSourcesAbstract;
-use Uupt\Erp\Http\Controllers\GoodController;
-use Uupt\Erp\Models\Good;
-use Uupt\Erp\Models\GoodsBrand;
-use Uupt\Erp\Models\GoodsClas;
+use ManoCode\Approval\Library\DataSourcesAbstract;
+use ManoCode\Erp\Http\Controllers\GoodController;
+use ManoCode\Erp\Models\Good;
+use ManoCode\Erp\Models\GoodsBrand;
+use ManoCode\Erp\Models\GoodsClas;
 
 /**
  * 商品变动审批流程

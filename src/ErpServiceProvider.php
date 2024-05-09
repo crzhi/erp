@@ -1,15 +1,15 @@
 <?php
 
-namespace Uupt\Erp;
+namespace ManoCode\Erp;
 
 use Illuminate\Support\Facades\Cache;
 use Slowlyo\OwlAdmin\Extend\Extension;
 use Slowlyo\OwlAdmin\Renderers\TextControl;
 use Slowlyo\OwlAdmin\Extend\ServiceProvider;
 use Slowlyo\OwlDict\Models\AdminDict as AdminDictModel;
-use Uupt\Approval\Library\DataSourcesManager;
-use Uupt\Erp\DataSources\GoodsDataSources;
-use Uupt\Erp\DataSources\PurchaseDataSources;
+use ManoCode\Approval\Library\DataSourcesManager;
+use ManoCode\Erp\DataSources\GoodsDataSources;
+use ManoCode\Erp\DataSources\PurchaseDataSources;
 
 class ErpServiceProvider extends ServiceProvider
 {

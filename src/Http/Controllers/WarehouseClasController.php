@@ -1,13 +1,13 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\GoodsClas;
-use Uupt\Erp\Models\WarehouseClas;
-use Uupt\Erp\Services\WarehouseClasService;
+use ManoCode\Erp\Models\GoodsClas;
+use ManoCode\Erp\Models\WarehouseClas;
+use ManoCode\Erp\Services\WarehouseClasService;
 
 /**
  * 仓库管理

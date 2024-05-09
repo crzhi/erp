@@ -1,12 +1,12 @@
 <?php
 
-namespace Uupt\Erp\Services;
+namespace ManoCode\Erp\Services;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Uupt\Erp\Http\Controllers\GoodController;
-use Uupt\Erp\Models\Good;
+use ManoCode\Erp\Http\Controllers\GoodController;
+use ManoCode\Erp\Models\Good;
 use Slowlyo\OwlAdmin\Services\AdminService;
 
 /**

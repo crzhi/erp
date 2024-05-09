@@ -1,32 +1,32 @@
 <?php
 
-use Uupt\Erp\Http\Controllers;
+use ManoCode\Erp\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 Route::get('erp', [Controllers\ErpController::class, 'index']);
 
 // 商品分类
-Route::resource('goods_class', \Uupt\Erp\Http\Controllers\GoodsClasController::class);
+Route::resource('goods_class', \ManoCode\Erp\Http\Controllers\GoodsClasController::class);
 // 计量单位
-Route::resource('goods_unit', \Uupt\Erp\Http\Controllers\GoodsUnitController::class);
+Route::resource('goods_unit', \ManoCode\Erp\Http\Controllers\GoodsUnitController::class);
 // 品牌分类
-Route::resource('brand_class', \Uupt\Erp\Http\Controllers\BrandClasController::class);
+Route::resource('brand_class', \ManoCode\Erp\Http\Controllers\BrandClasController::class);
 // 商品品牌
-Route::resource('goods_brand', \Uupt\Erp\Http\Controllers\GoodsBrandController::class);
+Route::resource('goods_brand', \ManoCode\Erp\Http\Controllers\GoodsBrandController::class);
 // 商品管理
-Route::resource('goods', \Uupt\Erp\Http\Controllers\GoodController::class);
+Route::resource('goods', \ManoCode\Erp\Http\Controllers\GoodController::class);
 // 企业分类
-Route::resource('company_class', \Uupt\Erp\Http\Controllers\CompanyClasController::class);
+Route::resource('company_class', \ManoCode\Erp\Http\Controllers\CompanyClasController::class);
 // 企业管理
-Route::resource('company', \Uupt\Erp\Http\Controllers\CompanyController::class);
+Route::resource('company', \ManoCode\Erp\Http\Controllers\CompanyController::class);
 // 仓库管理
-Route::resource('warehouse', \Uupt\Erp\Http\Controllers\WarehouseController::class);
+Route::resource('warehouse', \ManoCode\Erp\Http\Controllers\WarehouseController::class);
 // 仓库管理
-Route::resource('warehouse_class', \Uupt\Erp\Http\Controllers\WarehouseClasController::class);
+Route::resource('warehouse_class', \ManoCode\Erp\Http\Controllers\WarehouseClasController::class);
 // 采购管理
-Route::resource('purchase', \Uupt\Erp\Http\Controllers\PurchaseController::class);
+Route::resource('purchase', \ManoCode\Erp\Http\Controllers\PurchaseController::class);
 // 入库记录
-Route::resource('put_warehouse', \Uupt\Erp\Http\Controllers\PutWarehouseController::class);
+Route::resource('put_warehouse', \ManoCode\Erp\Http\Controllers\PutWarehouseController::class);
 
 /**
  * 提审采购单

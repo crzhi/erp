@@ -1,9 +1,9 @@
 <?php
 
-namespace Uupt\Erp\Services;
+namespace ManoCode\Erp\Services;
 
-use Uupt\Erp\Models\GoodsClas;
-use Uupt\Erp\Models\WarehouseClas;
+use ManoCode\Erp\Models\GoodsClas;
+use ManoCode\Erp\Models\WarehouseClas;
 use Slowlyo\OwlAdmin\Services\AdminService;
 
 /**

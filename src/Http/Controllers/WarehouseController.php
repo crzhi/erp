@@ -1,15 +1,15 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\GoodsBrand;
-use Uupt\Erp\Models\Warehouse;
-use Uupt\Erp\Services\WarehouseService;
+use ManoCode\Erp\Models\GoodsBrand;
+use ManoCode\Erp\Models\Warehouse;
+use ManoCode\Erp\Services\WarehouseService;
 
 /**
  * 仓库管理

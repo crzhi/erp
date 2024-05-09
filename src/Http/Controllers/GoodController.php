@@ -1,13 +1,13 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\Good;
-use Uupt\Erp\Models\GoodsUnit;
+use ManoCode\Erp\Models\Good;
+use ManoCode\Erp\Models\GoodsUnit;
 use Uupt\Erp\Services\GoodService;
 use Illuminate\Http\Request;
 
@@ -122,7 +122,7 @@ class GoodController extends AdminController
                 ]),
                 // 商品详情
                 amis()->Tab()->title('商品详情')->body([
-                    \UuptRichTextControl('rich_text', '介绍描述内容')->required(),
+                    \ManoRichTextControl('rich_text', '介绍描述内容')->required(),
                 ]),
                 // 规格信息
                 amis()->Tab()->title('规格信息')->body([

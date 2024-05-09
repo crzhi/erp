@@ -1,13 +1,13 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Erp\Models\GoodsBrand;
-use Uupt\Erp\Services\GoodsBrandService;
+use ManoCode\Erp\Models\GoodsBrand;
+use ManoCode\Erp\Services\GoodsBrandService;
 
 /**
  * 商品品牌
@@ -87,7 +87,7 @@ class GoodsBrandController extends AdminController
 			amis()->SelectControl('class', '品牌分类')->source('/erp/get-brand-class')->required(),
 			amis()->TextareaControl('desc', '品牌描述')->required(),
 			amis()->NumberControl('sort', '排序')->min(0)->value(0)->required(),
-			\UuptImageControl('logo', '品牌Logo')->required(),
+			\ManoCodeImageControl('logo', '品牌Logo')->required(),
             amis()->SwitchControl('status', '是否启用')->trueValue(1)->falseValue(0)->required()
                 ->onText('启用')
                 ->offText('禁用')

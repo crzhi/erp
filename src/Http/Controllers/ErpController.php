@@ -1,6 +1,6 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Slowlyo\OwlAdmin\Controllers\AdminController;
 

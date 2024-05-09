@@ -1,37 +1,37 @@
 {
-    "name": "uupt-open/erp",
+    "name": "mano-code/erp",
     "alias": "进销存管理",
     "description": "进销存管理模块",
     "type": "library",
-    "version": "1.0.0",
-    "keywords": ["owl-admin", "extension"],
-    "homepage": "https://github.com/uupt/erp",
+    "version": "1.0.2",
+    "keywords": ["extension"],
+    "homepage": "https://github.com/mano-php/erp",
     "license": "MIT",
     "authors": [
         {
-            "name": "UU跑腿",
-            "email": "admin@uupt.com"
+            "name": "Mano",
+            "email": "mano@qq.com"
         }
     ],
     "require": {
         "php": ">=8.0",
         "slowlyo/owl-admin": "*",
-        "uupt-open/approval": "*",
-        "uupt-open/filesystem": "*"
+        "mano-code/approval": "*",
+        "mano-code/filesystem": "*"
     },
     "autoload": {
         "psr-4": {
-            "Uupt\\Erp\\": "src/"
+            "ManoCode\\Erp\\": "src/"
         },
         "files": [
             "src/functions.php"
         ]
     },
     "extra": {
-        "owl-admin": "Uupt\\Erp\\ErpServiceProvider",
+        "owl-admin": "ManoCode\\Erp\\ErpServiceProvider",
         "laravel": {
             "providers": [
-                "Uupt\\Erp\\ErpServiceProvider"
+                "ManoCode\\Erp\\ErpServiceProvider"
             ]
         }
     }

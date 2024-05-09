@@ -1,15 +1,15 @@
 <?php
 
-namespace Uupt\Erp\Http\Controllers;
+namespace ManoCode\Erp\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Slowlyo\OwlAdmin\Renderers\Page;
 use Slowlyo\OwlAdmin\Renderers\Form;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
-use Uupt\Approval\Library\DataSourcesManager;
-use Uupt\Erp\Models\Purchase;
-use Uupt\Erp\Models\PutWarehouse;
-use Uupt\Erp\Services\PurchaseService;
+use ManoCode\Approval\Library\DataSourcesManager;
+use ManoCode\Erp\Models\Purchase;
+use ManoCode\Erp\Models\PutWarehouse;
+use ManoCode\Erp\Services\PurchaseService;
 
 /**
  * 采购订单
